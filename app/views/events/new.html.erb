@@ -1,3 +1,14 @@
+<% if flash[:event_creation_failure] %>
+  <% if @e.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <%= flash[:event_creation_failure] %>
+        <% @e.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+    </div>
+  <% end %>
+<% end %>
+
 
 <h1>Crée ton nouvel évènement !!!</h1>
 
