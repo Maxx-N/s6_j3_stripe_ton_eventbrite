@@ -1,48 +1,48 @@
+
 <h1>Crée ton nouvel évènement !!!</h1>
-<form action="/events" method="post">
+
+<br /> <br />
+
+<%= form_tag url_for(action: 'create'), method: "post" do %>
 
   <div class="form-group">
-    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <%= label_tag 'Titre' %>
+  <%= text_field_tag 'title' %>
   </div>
+  <br /> <br />
 
   <div class="form-group">
-    <label for="date">Date de début</label>
-    <input type="date" class="form-control" id="date" name:"date" aria-describedby="date">
+  <%= label_tag 'Date et heure de début' %>
+  <%= datetime_field_tag 'start_date' %>
   </div>
+  <br /> <br />
 
   <div class="form-group">
-    <label for="time">Heure de début</label>
-    <input type="time" class="form-control" id="time" name:"time" aria-describedby="time">
+  <%= label_tag 'Durée (en minutes)' %>
+  <%= number_field_tag 'duration' %>
   </div>
- 
-  <div class="form-group">
-    <label for="duration">Durée</label>
-    <input type="number" class="form-control" id="duration" name="duration" placeholder="Merci de rentrer la durée en minutes">
-    <small id="duration" class="form-text text-muted">Multiple de 5</small>
-  </div>
+  <br /> <br />
 
   <div class="form-group">
-    <label for="title">Titre</label>
-    <input type="text" class="form-control" id="title" name="title" placeholder="Le nom de ton évènement">
-    <small id="title" class="form-text text-muted">5 à 140 caractères</small>
+  <%= label_tag 'Lieu' %>
+  <%= text_field_tag 'location'%>
   </div>
+  <br /> <br />
 
   <div class="form-group">
-    <label for="description">Description</label>
-    <input type="text" class="form-control" id="description" name="description" placeholder="Décris ton évènements aux autres utilisateurs">
-    <small id="duration" class="form-text text-muted">20 à 1000 caractères</small>
+  <%= label_tag 'Prix' %>
+  <%= number_field_tag 'price' %>
   </div>
+  <br /> <br />
 
   <div class="form-group">
-    <label for="price">Prix</label>
-    <input type="number" class="form-control" id="price" name="price" placeholder="Merci de rentrer le prix en euros">
-    <small id="price" class="form-text text-muted">1 à 1000 euros</small>
+  <%= label_tag 'Description' %>
   </div>
+  <%= text_area_tag 'description' %>
+  <br /> <br />
 
   <div class="form-group">
-    <label for="location">Lieu</label>
-    <input type="text" class="form-control" id="location" name="location" placeholder="L'endroit où va se dérouler ton évènement">
+  <%= submit_tag "Créer l'évènement !" %>
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<% end %>

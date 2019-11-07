@@ -6,16 +6,25 @@ class EventsController < ApplicationController
     @my_event = Event.find(params[:id])
   end
 
+  def new
+  end
+
   def create
     e = Event.new
-    e.id = Event.last.id + 1
+    e.id = Event.all.length + 1
+    e.organizer = current_user
     e.title = params[:title]
-    e.start_date = params[:date] # À modifier
+    e.start_date = params[:start_date]
     e.duration = params[:duration]
     e.description = params[:description]
     e.price = params[:price]
     e.location = params[:location]
-    e.save
+    tp e
+    if e.save
+      redirect_to '/'
+    else
+      render 'new'
+    end
   end
 end
 

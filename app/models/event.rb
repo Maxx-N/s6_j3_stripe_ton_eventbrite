@@ -19,7 +19,7 @@ class Event < ApplicationRecord
   validates :location, presence: true
 
   def is_future?
-    self.start_date > Time.now
+    self.start_date > DateTime.now
   end
 
   def duration_is_multiple_of_5?
