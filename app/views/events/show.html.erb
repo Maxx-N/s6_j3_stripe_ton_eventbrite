@@ -4,24 +4,31 @@
   </div>
 <% end %>
 
-<div class="jumbotron">
-  <h1 class="display-3"><%= @my_event.title %></h1>
-  <p class="lead">
-    <ul>
-      <li><u>Nombre d'inscrits :</u> <%= @my_event.users.length %> personne(s)</li><br>
-      <li><u>Email de l'organisateur :</u> <%= @my_event.organizer.email %></li><br>
-      <li><u>Date et heure de début :</u> <%= @my_event.start_date.strftime("%d %B %Y, %H:%M") %></li><br>
-      <li><u>Date et heure de fin :</u> <%= @my_event.end_date.strftime("%d %B %Y, %H:%M") %></li><br>
-      <li><u>Lieu :</u> <%= @my_event.location %></li><br>
-      <li><u>Prix :</u> <%= @my_event.price %> €</li><br>
-      <li><u>Description :</u> <%= @my_event.description %></li>
-      <br><br>
-      <% if @my_event.users.include?(current_user) %>
-        <% attendance_to_destroy_id = @my_event.attendances.find_by(user: current_user).id %>
-        <%= link_to "Se désinscrire", attendance_path(attendance_to_destroy_id), method: :delete %>
-      <% end %>
-      <br><br>
-      <%= link_to "Retour à l'accueil", events_path %>
-    </ul>
-  </p>
+<div>
+  <div class="jumbotron">
+    <h1 class="display-3 text-center"><%= @my_event.title %></h1>
+    <br>
+    <p class="display-5 text-center"> <%= @my_event.description %> </p>
+    <br>
+    <p class="lead">
+      <ul>
+        <li><u>Nombre d'inscrits :</u> <%= @my_event.users.length %> personne(s)</li><br>
+        <li><u>Email de l'organisateur :</u> <%= @my_event.organizer.email %></li><br>
+        <li><u>Date et heure de début :</u> <%= @my_event.start_date.strftime("%d %B %Y, %H:%M") %></li><br>
+        <li><u>Date et heure de fin :</u> <%= @my_event.end_date.strftime("%d %B %Y, %H:%M") %></li><br>
+        <li><u>Lieu :</u> <%= @my_event.location %></li><br>
+        <li><u>Prix :</u> <%= @my_event.price %> €</li><br>
+        <br><br>
+        <% if @my_event.users.include?(current_user) %>
+          <% attendance_to_destroy_id = @my_event.attendances.find_by(user: current_user).id %>
+          <%= link_to "Se désinscrire", attendance_path(attendance_to_destroy_id), method: :delete %>
+        <% else %>
+        <%= link_to "S'inscrire", attendances_path(my_event_id: @my_event.id), method: :post %>
+
+        <% end %>
+        <br><br>
+        <%= link_to "Retour à l'accueil", events_path %>
+      </ul>
+    </p>
+  </div>
 </div>

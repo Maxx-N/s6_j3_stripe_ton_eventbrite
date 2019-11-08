@@ -10,50 +10,42 @@
 <% end %>
 
 
-<h1>Crée ton nouvel évènement !!!</h1>
-
-<br /> <br />
-
 <%= form_tag url_for(action: 'create'), method: "post" do %>
+  <fieldset>
+    <legend class="text-center"><h1>Crée ton nouvel évènement !!!</h1></legend>
+    <div class="form-group">
+    <%= label_tag 'Titre' %>
+    <div class="form-control"><%= text_field_tag 'title' %></div>
+    </div>
 
-  <div class="form-group">
-  <%= label_tag 'Titre' %>
-  <%= text_field_tag 'title' %>
-  </div>
-  <br /> <br />
+    <div class="form-group">
+    <%= label_tag 'Date et heure de début' %>
+    <div class="form-control"><%= datetime_field_tag 'start_date' %></div>
+    </div>
 
-  <div class="form-group">
-  <%= label_tag 'Date et heure de début' %>
-  <%= datetime_field_tag 'start_date' %>
-  </div>
-  <br /> <br />
+    <div class="form-group">
+    <%= label_tag 'Durée en minutes (multiple de 5)' %>
+    <div class="form-control"><%= number_field_tag 'duration' %></div>
+    </div>
 
-  <div class="form-group">
-  <%= label_tag 'Durée en minutes (multiple de 5)' %>
-  <%= number_field_tag 'duration' %>
-  </div>
-  <br /> <br />
+    <div class="form-group">
+    <%= label_tag 'Lieu' %>
+    <div class="form-control"><%= text_field_tag 'location'%></div>
+    </div>
 
-  <div class="form-group">
-  <%= label_tag 'Lieu' %>
-  <%= text_field_tag 'location'%>
-  </div>
-  <br /> <br />
+    <div class="form-group">
+    <%= label_tag 'Prix (entre 1 et 1000 €)' %>
+    <div class="form-control"><%= number_field_tag 'price' %></div>
+    </div>
 
-  <div class="form-group">
-  <%= label_tag 'Prix (entre 1 et 1000 €)' %>
-  <%= number_field_tag 'price' %>
-  </div>
-  <br /> <br />
-
-  <div class="form-group">
-  <%= label_tag 'Description' %>
-  </div>
-  <%= text_area_tag 'description' %>
-  <br /> <br />
-
-  <div class="form-group">
-  <%= submit_tag "Créer l'évènement !" %>
-  </div>
-
+    <div class="form-group">
+    <%= label_tag 'Description' %>
+    <div class="form-control"><%= text_area_tag 'description' %></div>
+    </div>
+    <br /> 
+ 
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">Créer l'évènement !</button>
+    </div>
+  </fieldset>
 <% end %>
