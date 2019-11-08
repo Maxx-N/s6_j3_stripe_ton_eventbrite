@@ -1,24 +1,28 @@
 <% if @my_user.first_name %>
-  <h1> <%= @my_user.first_name %> <%= @my_user.last_name  %></h1>
+  <h1 class="text-center"> <%= @my_user.first_name %> <%= @my_user.last_name  %></h1>
 <% else %>
-  <h1> <%= @my_user.email  %></h1>
+  <h1 class="text-center"> <%= @my_user.email  %></h1>
 <% end %>
-
+<br>
 <p>
   <ul>
-    <li><u>Email : </u><%= @my_user.email %></li>
-    <li><u>Description : </u><%= @my_user.description %></li>
+    <li><u>Email :</u> <%= @my_user.email %></li>
+    <br>
+    <li><u>Description :</u> <%= @my_user.description %></li>
   </ul>
 </p>
+<br><br>
 
 <% if @my_user.first_name %>
-  <h2>Voici la liste des évènements proposés par <%= @my_user.first_name %>:</h2>
+  <h2 class="text-center">Voici la liste des évènements proposés par <%= @my_user.first_name %> :</h2>
 <% else %>
-<h2>Voici la liste des évènements proposés par <%= @my_user.email %>:</h2>
+<h2 class="text-center">Voici la liste des évènements proposés par <%= @my_user.email %> :</h2>
 <% end %>
-    <ul>
-      <% @my_user.organized_events.each do |e| %>
-        <li> <%= link_to "#{e.title}", event_path(e.id) %></li>
-      <% end %>
-    </ul>
+<br>
+<ul>
+  <% @my_user.organized_events.each do |e| %>
+    <li> <%= link_to "#{e.title}", event_path(e.id) %></li>
+    <br>
+  <% end %>
+</ul>
   

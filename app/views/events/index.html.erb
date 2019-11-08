@@ -22,6 +22,12 @@
   </div>
 <% end %>
 
+<% if flash[:not_your_profile] %>
+  <div class="alert alert-danger" role="alert">
+    <%= flash[:not_your_profile] %>
+  </div>
+  <% end %>
+
   <br>
   <h1 class=text-center>Voici la liste des évènements de Montpellier !!!</h1>
   <br><br>
