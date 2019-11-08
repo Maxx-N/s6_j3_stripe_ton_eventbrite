@@ -15,6 +15,13 @@
       <li><u>Lieu :</u> <%= @my_event.location %></li><br>
       <li><u>Prix :</u> <%= @my_event.price %> €</li><br>
       <li><u>Description :</u> <%= @my_event.description %></li>
+      <br><br>
+      <% if @my_event.users.include?(current_user) %>
+        <% attendance_to_destroy_id = @my_event.attendances.find_by(user: current_user).id %>
+        <%= link_to "Se désinscrire", attendance_path(attendance_to_destroy_id), method: :delete %>
+      <% end %>
+      <br><br>
+      <%= link_to "Retour à l'accueil", events_path %>
     </ul>
   </p>
 </div>
