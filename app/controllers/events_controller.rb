@@ -24,8 +24,8 @@ class EventsController < ApplicationController
     @e.price = params[:price]
     @e.location = params[:location]
     if @e.save
+      redirect_to event_path(@e.id)
       flash[:event_creation_success] = "Félicitations !!! Ton évènement a été créé ! ;)"
-      redirect_to root_path
     else
       flash.now[:event_creation_failure] = "Ton évènement n'a pas pu être créé pour les raisons suivantes : "
       render 'new'
