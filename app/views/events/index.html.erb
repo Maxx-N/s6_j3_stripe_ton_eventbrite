@@ -16,6 +16,12 @@
   </div>
 <% end %>
 
+<% if flash[:unattending] %>
+  <div class="alert alert-info" role="alert">
+    <%= flash[:unattending] %>
+  </div>
+<% end %>
+
   <h1>Voici la liste des évènements de Montpellier !!!</h1>
   <div class="d-flex flex-wrap">
       <% Event.all.each do |e| %>
@@ -33,7 +39,12 @@
                   <br>
                   <li><u>Description : </u><br><%= e.description %></li> 
                   <br><br>
-                  <%= link_to 'Rejoindre cet évènement', attendances_path(my_event_id: e.id), method: :post %>        
+                  <% unless e.users.include?(current_user) %>
+                    <%= link_to 'Rejoindre cet évènement', attendances_path(my_event_id: e.id), method: :post %>
+                  <% else %>
+                    <% attendance_to_destroy_id = e.attendances.find_by(user: current_user).id %>
+                      <%= link_to "Se désinscrire", attendance_path(attendance_to_destroy_id), method: :delete %>
+                  <% end %>
                 </p>
             </div>
         </div>
