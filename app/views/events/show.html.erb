@@ -1,3 +1,9 @@
+<% if flash[:you_attend] %>
+  <div class="alert alert-success" role="alert">
+    <%= flash[:you_attend] %>
+  </div>
+<% end %>
+
 <div class="jumbotron">
   <h1 class="display-3"><%= @my_event.title %></h1>
   <p class="lead">

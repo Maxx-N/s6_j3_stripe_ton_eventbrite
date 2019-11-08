@@ -9,7 +9,7 @@ class EventsController < ApplicationController
   def new
     unless user_signed_in?
       redirect_to root_path
-      flash[:sign_in_to_create] = "Tu dois te connecter (ou t'inscrire) pour créer un évènement !"
+      flash[:sign_in_to_create] = "Tu dois te connecter ou t'inscrire pour créer un évènement !"
     end
   end
 
@@ -32,9 +32,3 @@ class EventsController < ApplicationController
     end
   end
 end
-
-=begin
-  date_string = Date.strptime(params[:time], "%d/%m/%Y").to_s
-  time_string = params[:time].to_s
-  e.start_date = Time.parse("#{date_string} #{time_string}")
-=end
