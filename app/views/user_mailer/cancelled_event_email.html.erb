@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+  </head>
+  <body>
+    <h1>Bonjour <%= @user.email %> ! </h1>
+    <p>
+      Nous avons malheureusement le regret de t'informer que <%= @event.organizer.email %> vient d'annuler l'évènement "<%= @event.title %>" du <%= @event.start_date %>.
+    </p>
+    <p>
+      Connecte-toi vite sur <%= @url %> pour rejoindre ou créer d'autres évènements !
+    </p>
+    <p> À très vite sur montpel-events.com !</p>
+  </body>
+</html>

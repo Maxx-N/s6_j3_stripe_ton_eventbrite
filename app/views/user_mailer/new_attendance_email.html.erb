@@ -5,7 +5,7 @@
   </head>
   <body>
     <h1>Félicitations <%= @attendance.event.organizer.first_name %> !!!</h1>
-    <p> Ton évènement a un(e) nouvel(le) inscrit(e) : <%= @attendance.user.first_name %>.</p>
+    <p> Ton évènement "<%= @attendance.event.title %>" a un(e) nouvel(le) inscrit(e) : <%= @attendance.user.email %>.</p>
     <p>Il y a maintenant <%= @attendance.event.attendances.length %> participant(e)s ! :D</p>
     <p> À très vite pour d'autres bonnes nouvelles !</p>
   </body>

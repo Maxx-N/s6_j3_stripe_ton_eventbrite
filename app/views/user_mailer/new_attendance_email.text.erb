@@ -2,7 +2,7 @@ Félicitations <%= @attendance.event.organizer.first_name %> !!!
 
 ==========================================================
 
-Ton évènement a un(e) nouvel(le) inscrit(e) : <%= @attendance.user.first_name %>
+Ton évènement "<%= @attendance.event.title %>" a un(e) nouvel(le) inscrit(e) : <%= @attendance.user.email %>
 
 Il y a maintenant <%= @attendance.event.attendances.length %> participant(e)s ! :D
 

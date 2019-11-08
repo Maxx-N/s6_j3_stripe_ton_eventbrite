@@ -4,12 +4,6 @@
   </div>
 <% end %>
 
-<% if flash[:sign_in_to_create] %>
-  <div class="alert alert-danger" role="alert">
-    <%= flash[:sign_in_to_create] %>
-  </div>
-<% end %>
-
 <% if flash[:already_attending] %>
   <div class="alert alert-danger" role="alert">
     <%= flash[:already_attending] %>
@@ -26,7 +20,13 @@
   <div class="alert alert-danger" role="alert">
     <%= flash[:not_your_profile] %>
   </div>
-  <% end %>
+<% end %>
+
+<% if flash[:event_cancelled] %>
+  <div class="alert alert-info" role="alert">
+    <%= flash[:event_cancelled] %>
+  </div>
+<% end %>
 
   <br>
   <h1 class=text-center>Voici la liste des évènements de Montpellier !!!</h1>
@@ -50,6 +50,10 @@
                   <% else %>
                     <% attendance_to_destroy_id = e.attendances.find_by(user: current_user).id %>
                       <%= link_to "Se désinscrire", attendance_path(attendance_to_destroy_id), method: :delete %>
+                  <% end %>
+                  <br><br>
+                  <% if e.organizer == current_user %>
+                    <%= link_to "Supprimer l'évènement", event_path(e.id), method: :delete %>
                   <% end %>
                 </p>
             </div>

@@ -1,3 +1,16 @@
+<% if flash[:connect_to_participate] %>
+  <div class="alert alert-danger" role="alert">
+    <%= flash[:connect_to_participate] %>
+  </div>
+<% end %>
+
+<% if flash[:sign_in_to_create] %>
+  <div class="alert alert-danger" role="alert">
+    <%= flash[:sign_in_to_create] %>
+  </div>
+<% end %>
+
+
 <h2>Connexion</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

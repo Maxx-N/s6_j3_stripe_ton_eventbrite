@@ -2,6 +2,7 @@ class Event < ApplicationRecord
   has_many :attendances
   has_many :users, through: :attendances
   belongs_to :organizer, class_name: "User"
+  before_destroy :sorry_send
 
   validates :start_date, presence: { message: "--> L'évènement doit avoir une date et une heure de début" }
   validates :is_future?, presence: { message: "--> L'évènement ne peut commencer que dans le futur" }
@@ -28,6 +29,10 @@ class Event < ApplicationRecord
 
   def end_date
     end_date = start_date + (duration * 60) 
+  end
+
+  def sorry_send
+    UserMailer.cancelled_event_email(self).deliver_now
   end
 
 end

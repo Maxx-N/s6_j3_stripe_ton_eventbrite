@@ -16,4 +16,14 @@ class UserMailer < ApplicationMailer
     @attendance = attendance
     mail(to: @attendance.event.organizer.email, subject: "Nouveau participant à votre évènement!!!")
   end
+
+  def cancelled_event_email(event)
+    @event = event
+    @url  = 'http://montpel-events.herokuapp.com/login'
+    @event.users.each do |user|
+      @user = user
+      mail(to: user.email, subject: "Annulation de l'évènement #{@event.title} :(")
+    end
+  end
+
 end
